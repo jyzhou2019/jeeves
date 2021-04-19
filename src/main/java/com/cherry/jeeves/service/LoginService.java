@@ -56,7 +56,7 @@ public class LoginService {
             ByteArrayInputStream stream = new ByteArrayInputStream(qrData);
             String qrUrl = QRCodeUtils.decode(stream);
             stream.close();
-            String qr = QRCodeUtils.generateQR(qrUrl, 40, 40);
+            String qr = QRCodeUtils.generateQR(qrUrl, 5, 5);
             logger.info("\r\n" + qr);
             logger.info("[2] qrcode completed");
             //3 statreport
