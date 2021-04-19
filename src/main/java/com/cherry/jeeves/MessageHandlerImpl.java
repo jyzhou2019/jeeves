@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Set;
@@ -86,10 +85,14 @@ public class MessageHandlerImpl implements MessageHandler {
         logger.info("onChatRoomMembersChanged");
         logger.info("chatRoom:" + chatRoom.getUserName());
         if (membersJoined != null && membersJoined.size() > 0) {
-            logger.info("membersJoined:" + String.join(",", membersJoined.stream().map(ChatRoomMember::getNickName).collect(Collectors.toList())));
+            logger.info("membersJoined:" + membersJoined.stream()
+                    .map(ChatRoomMember::getNickName)
+                    .collect(Collectors.joining(",")));
         }
         if (membersLeft != null && membersLeft.size() > 0) {
-            logger.info("membersLeft:" + String.join(",", membersLeft.stream().map(ChatRoomMember::getNickName).collect(Collectors.toList())));
+            logger.info("membersLeft:" + membersLeft.stream()
+                    .map(ChatRoomMember::getNickName)
+                    .collect(Collectors.joining(",")));
         }
     }
 
